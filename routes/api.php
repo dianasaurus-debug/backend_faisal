@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [APIAuthController::class, 'logout']);
     Route::get('contact/all', [APIContactController::class, 'index']);
     Route::post('contact/create', [APIContactController::class, 'store']);
-    Route::post('contact/delete/{id}', [APIContactController::class, 'destroy']);
+    Route::delete('contact/delete/{id}', [APIContactController::class, 'destroy']);
     Route::get('history/all', [APIHistoryController::class, 'index']);
     Route::post('history/create', [APIHistoryController::class, 'store']);
 });
