@@ -117,6 +117,21 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $contact = Contact::where('id', $id)->first();
+            $contact->delete();
+            return response()
+                ->json([
+                    'success' => true,
+                    'message' => 'Berhasil hapus kontak!',
+                    'data' => $contact
+                ]);
+        } catch (\Exception $e) {
+            return response()
+                ->json([
+                    'success' => false,
+                    'message' => 'Gagal register! Error : ' . $e->getMessage(),
+                ]);
+        }
     }
 }
