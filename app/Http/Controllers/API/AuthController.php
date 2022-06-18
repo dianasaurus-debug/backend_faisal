@@ -123,7 +123,9 @@ class AuthController extends Controller
 
             $user = User::where('email', $request['email'])
                 ->first();
-            $user->update(['fcm_token' => $request->fcm_token]);
+            if($request->fcm_token!=null){
+                $user->update(['fcm_token' => $request->fcm_token]);
+            }
 
             $token = $user->createToken('auth_token')->plainTextToken;
             return response()
