@@ -30,7 +30,7 @@ Route::post('/send/test', [APINotificationController::class, 'testting']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/send/whatsapp', [APINotificationController::class, 'send_whatsapp']);
     Route::get('/profile', [APIAuthController::class, 'profile']);
-    Route::put('/update', [APIAuthController::class, 'update']);
+    Route::post('/update', [APIAuthController::class, 'update']);
     Route::post('/logout', [APIAuthController::class, 'logout']);
     Route::get('contact/all', [APIContactController::class, 'index']);
     Route::post('contact/create', [APIContactController::class, 'store']);
