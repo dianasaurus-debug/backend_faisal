@@ -41,6 +41,7 @@ class AuthController extends Controller
                 'gender' => $request->gender,
                 'email' => $request->email,
                 'alamat' => $request->alamat,
+                'fcm_token' => $request->fcm_token,
                 'password' => Hash::make($request->password)
             ]);
 
@@ -61,6 +62,7 @@ class AuthController extends Controller
                 ]);
         }
     }
+    
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -121,6 +123,7 @@ class AuthController extends Controller
 
             $user = User::where('email', $request['email'])
                 ->first();
+            $user->update(['fcm_token' => $request->fcm_token]);
 
             $token = $user->createToken('auth_token')->plainTextToken;
             return response()
