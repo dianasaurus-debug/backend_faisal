@@ -69,7 +69,6 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'alamat' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
             'phone' => 'required',
             'bb' => 'required',
             'tb' => 'required',
@@ -94,7 +93,6 @@ class AuthController extends Controller
                     'gender' => $request->gender,
                     'email' => $request->email,
                     'alamat' => $request->alamat,
-                    'password' => Hash::make($request->password)
                 ]);
 
             return response()
