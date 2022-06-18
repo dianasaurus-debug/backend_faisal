@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('contact/all', [APIContactController::class, 'index']);
     Route::post('contact/create', [APIContactController::class, 'store']);
     Route::delete('contact/delete/{id}', [APIContactController::class, 'destroy']);
+    Route::put('contact/update/{id}', [APIContactController::class, 'update']);
     Route::get('history/all', [APIHistoryController::class, 'index']);
     Route::post('history/create', [APIHistoryController::class, 'store']);
 });

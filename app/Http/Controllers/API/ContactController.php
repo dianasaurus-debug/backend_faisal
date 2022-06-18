@@ -106,7 +106,28 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $contact = Contact::where('id', $id)->first();
+            $contact->update([
+                'name' => $request->name,
+                'role' => $request->role,
+                'phone' => $request->phone,
+                'user_id' => Auth::id(),
+            ]);
+
+            return response()
+                ->json([
+                    'success' => true,
+                    'message' => 'Berhasil update kontak!',
+                    'data' => $contact
+                ]);
+        } catch (\Exception $e) {
+            return response()
+                ->json([
+                    'success' => false,
+                    'message' => 'Gagal register! Error : ' . $e->getMessage(),
+                ]);
+        }
     }
 
     /**
