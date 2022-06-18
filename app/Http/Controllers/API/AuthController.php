@@ -76,10 +76,6 @@ class AuthController extends Controller
             'gender' => 'required',
         ]);
 
-        if($validator->fails()){
-            return response()
-                ->json(['success' => false,'message' => 'Pastikan data dimasukkan dengan lengkap!'], 401);
-        }
 
         try {
             $user = User::where('id', auth()->user()->id)->first();
