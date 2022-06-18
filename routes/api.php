@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/send/whatsapp', [APINotificationController::class, 'send_whatsapp']);
     Route::get('/profile', [APIAuthController::class, 'profile']);
     Route::post('/update', [APIAuthController::class, 'update']);
+    Route::post('/change/password', [APIAuthController::class, 'change_password']);
     Route::post('/logout', [APIAuthController::class, 'logout']);
     Route::get('contact/all', [APIContactController::class, 'index']);
     Route::post('contact/create', [APIContactController::class, 'store']);

@@ -68,7 +68,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
             'alamat' => 'required|string',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255',
             'phone' => 'required',
             'bb' => 'required',
             'tb' => 'required',
@@ -186,4 +186,40 @@ class AuthController extends Controller
                 ]);
         }
     }
+    public function change_password(Request $request){
+        if(!auth()){
+            return response()
+                ->json([
+                    'success' => false,
+                    'message' => 'Unauthorized',
+                ]);
+        }
+        try {
+            $user = auth()->user();
+            if(Hash::check($request->password, $user->password)){
+                $found_user = User::where('id', $user->id)->first();
+                $found_user->update(['password'=>Hash::make($request->new_password)]);
+                return response()
+                    ->json([
+                        'success' => true,
+                        'message' => 'Berhasil merubah password!',
+                        'data' => $user
+                    ]);
+            } else {
+                return response()
+                    ->json([
+                        'success' => false,
+                        'message' => 'Password yang dimasukkan tidak tepat',
+                    ]);
+            }
+
+        } catch (\Exception $e){
+            return response()
+                ->json([
+                    'success' => false,
+                    'message' => 'Gagal menampilkan profil! Error : '.$e->getMessage(),
+                ]);
+        }
+    }
 }
+
