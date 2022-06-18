@@ -59,8 +59,9 @@ class HistoryController extends Controller
             $sekarang = Carbon::parse(Carbon::now())->format('H:i:s'); 
             $url = 'https://fcm.googleapis.com/fcm/send';
             
-            $FcmKey = 'AAAA3-X7Fv4:APA91bGSFy43ClzXNtmZdak-P48lSx4vrVf-Mx2jwV-QYwjNxSkSGpER5zvCuoTkj2yEIe24OMhPNjMASKIqF7gQkFhgodQqYG60XIXf3_5mWQUjX48hUqjasjtOtXJHU2nfNIHkSTWL';
-    
+            $FcmKey = 'AAAAXA3M_OI:APA91bG5hvQfoDbq5GPgM2AY47lF0RiLYw996FpPggh8p9IE12ueebV2Uw1XgTjb10oM0UO6sAFUq67J2FFp2lf6q4_Fk471DOtcFuyONxu6ZZ-zNZEUjb6bxRFSW1L3-57j9aFvT-VH';
+            $title = 'Anda terjatuh!!!!';
+            $text = 'Bantuan akan dikirim ke kontak melalui Whatsapp';
             $data = [
                 "registration_ids" => [$fcm_token],
                 "notification" => [
