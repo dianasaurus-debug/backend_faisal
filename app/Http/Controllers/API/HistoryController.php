@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\History;
+use App\User;
 class HistoryController extends Controller
 {
     /**
