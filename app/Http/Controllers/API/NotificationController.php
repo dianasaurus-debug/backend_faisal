@@ -27,7 +27,7 @@ class NotificationController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
-        curl_setopt($ch, CURLOPT_USERPWD, '9bf7e252' . ':' . 'wJw93r0uw3rSBE8B');
+        curl_setopt($ch, CURLOPT_USERPWD, '258b238d' . ':' . '0fAdjHZTmb06AVsi');
 
         $headers = array();
         $headers[] = 'Content-Type: application/json';
